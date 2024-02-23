@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Styled Buttons Example</title>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+
+    th {
+        background-color: #f2f2f2;
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+  
+    td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+  
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    .button {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    .button2 {
+        background-color: #af4c4c; 
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    
+    #button1 {
+        background-color: #4CAF50; 
+    }
+</style>
+</head>
+<body>
+    <table>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Role</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+          <td>{{user.username}}</td>
+          <td>{{user.password}}</td>
+          <td>{{user.role.name}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+<a href="adduser">
+    <button id="button2" class="button">Add user</button>
+</a>
+<table>
+    <tr>
+      <th>Lesson name</th>
+      <th>Teacher</th>
+    </tr>
+    {% for lesson in lessons %}
+    <tr>
+      <td>{{lesson.title}}</td>
+      <td>{{lesson.teacher.username}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+<a href="addlesson">
+<button id="button2" class="button">Add lesson</button>
+</a>
+<table>
+    <tr>
+      <th>Username</th>
+      <th>Lesson</th>
+      <th>Score</th>
+    </tr>
+    {% for study in studys %}
+    <tr>
+      <td>{{study.user.username}}</td>
+      <td>{{study.lesson.title}}</td>
+      <td>{{study.score}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+<a href="addstudy">
+<button id="button2" class="button">Add study</button>
+</a>
+<form method="post"> 
+    {% csrf_token %}
+        <input type="submit" value="Log Out" name="logout" class="button2">
+</form>
+
+</body>
+</html>
